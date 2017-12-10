@@ -1,4 +1,4 @@
-import isUndefined from '../../../utils/is-undefined'
+import isUndefined from '../../../../utils/is-undefined'
 
 const derive =
 [

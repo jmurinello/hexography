@@ -1,5 +1,3 @@
-import isUndefined from '../../../../utils/is-undefined'
-
 const derive =
 [
   [0,0,1],
@@ -18,7 +16,7 @@ const sum = (x, y) =>
 ]
 
 const fetchPoints = ([x, ...xs], y) =>
-  isUndefined(x) ? [] : [sum(x, y), ...fetchPoints(xs, y)]
+  typeof x === 'undefined' ? [] : [sum(x, y), ...fetchPoints(xs, y)]
 
 const listPoints = point => fetchPoints(derive, point)
 

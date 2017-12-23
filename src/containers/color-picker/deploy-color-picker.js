@@ -2,7 +2,7 @@ import compose from '../../lib/compose'
 import createHexagon from '../../helpers/create-hexagon'
 
 const enclose = c => p =>
-  document.querySelector(`.shade${c}`).innerHTML = `${p}`
+  document.querySelector(`.js-shade${c}`).innerHTML = `${p}`
 
 const picker = appearance => createHexagon({ appearance })
 

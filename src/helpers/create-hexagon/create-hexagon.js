@@ -8,7 +8,7 @@ const createHexagon =
 (
   {
     appearance = 'framework',
-    diameter = 30,
+    diameter = 20,
     coordinates = [[0,0,0]]
   }
 ) => groupHexagon(appearance)(diameter)(coordinates)

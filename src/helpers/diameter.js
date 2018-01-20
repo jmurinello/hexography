@@ -1,3 +1,3 @@
-const diameter = 20
+const diameter = 10
 
 export default diameter

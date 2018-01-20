@@ -19,7 +19,8 @@ const deployColorPicker = () => deploy
     'light-green',
     'green',
     'light-brown',
-    'brown'
+    'brown',
+    'current'
   ]
 )
 

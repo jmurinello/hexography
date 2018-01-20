@@ -3,7 +3,7 @@ import createHexagon from '../../../helpers/create-hexagon'
 import diameter from '../../../helpers/diameter'
 
 const plot = tiles =>
-  document.querySelector('.js-viewport').innerHTML = `${tiles}`
+  document.querySelector('.js-viewport').innerHTML += `${tiles}`
 
 const grid = coordinates => createHexagon({ diameter, coordinates })
 

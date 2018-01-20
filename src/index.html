@@ -5,10 +5,19 @@
   <title>Hexography</title>
 </head>
 <body>
+  <h1>Hexography</h1>
   <div>
-    <svg viewBox="-480 -205 960 410" class="viewport js-viewport"></svg>
+    <svg viewBox="-480 -205 960 410" class="viewport js-viewport">
+      <defs>
+        <filter id='highlight'>
+          <feMorphology operator="erode" radius="1"/>
+          <feComposite in="SourceGraphic" operator="in"/>
+        </filter>
+      </defs>
+    </svg>
   </div>
-  <ul>
+  <ul class="js-palette">
+    <p>Select a color:</p>
     <li>
       <svg viewBox="-25 -25 50 50" class="js-shade1"></svg>
     </li>
@@ -26,6 +35,12 @@
     </li>
     <li>
       <svg viewBox="-25 -25 50 50" class="js-shade6"></svg>
+    </li>
+  </ul>
+  <ul>
+    <p>Current color:</p>
+    <li>
+      <svg viewBox="-25 -25 50 50" class="js-shade7"></svg>
     </li>
   </ul>
 </body>

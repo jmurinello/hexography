@@ -1,0 +1,34 @@
+.light-blue
+{
+  fill: hsl(211, 34%, 76%);
+}
+
+.blue
+{
+  fill: hsl(208, 46%, 66%);
+}
+
+.light-green
+{
+  fill: hsl(91, 37%, 54%);
+}
+
+.green
+{
+  fill: hsl(132, 29%, 36%);
+}
+
+.light-brown
+{
+  fill: hsl(49, 48%, 54%);
+}
+
+.brown
+{
+  fill: hsl(40, 75%, 33%);
+}
+
+.current
+{
+  fill: var(--base-color);
+}

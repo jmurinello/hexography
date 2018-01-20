@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hexography</title>
+<link href="styles.css" rel="stylesheet"></head>
+<body>
+  <h1>Hexography</h1>
+  <div>
+    <svg viewBox="-480 -205 960 410" class="viewport js-viewport">
+      <defs>
+        <filter id='highlight'>
+          <feMorphology operator="erode" radius="1"/>
+          <feComposite in="SourceGraphic" operator="in"/>
+        </filter>
+      </defs>
+    </svg>
+  </div>
+  <ul class="js-palette">
+    <p>Select a color:</p>
+    <li>
+      <svg viewBox="-25 -25 50 50" class="js-shade1"></svg>
+    </li>
+    <li>
+      <svg viewBox="-25 -25 50 50" class="js-shade2"></svg>
+    </li>
+    <li>
+      <svg viewBox="-25 -25 50 50" class="js-shade3"></svg>
+    </li>
+    <li>
+      <svg viewBox="-25 -25 50 50" class="js-shade4"></svg>
+    </li>
+    <li>
+      <svg viewBox="-25 -25 50 50" class="js-shade5"></svg>
+    </li>
+    <li>
+      <svg viewBox="-25 -25 50 50" class="js-shade6"></svg>
+    </li>
+  </ul>
+  <ul>
+    <p>Current color:</p>
+    <li>
+      <svg viewBox="-25 -25 50 50" class="js-shade7"></svg>
+    </li>
+  </ul>
+  <script type="text/javascript" src="main.bundle.js"></script>
+</body>
+</html>

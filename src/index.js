@@ -1,4 +1,4 @@
-import './main.css'
+import '../public/assets/main.css'
 import './containers/color-picker/deploy-color-picker.css'
 import './helpers/create-hexagon/create-hexagon.css'
 import generateGrid from './containers/grid'

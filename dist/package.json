@@ -1,8 +1,6 @@
 {
-  "name": "Hexography",
+  "name": "personal-library",
   "version": "1.0.0",
-  "description": "Odin etch-a-sketch project",
-  "author": "J.Murinello",
   "private": true,
   "scripts": {
     "postinstall": "npm install express"

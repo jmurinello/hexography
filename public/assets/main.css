@@ -16,6 +16,7 @@ h1
   margin: 0;
   font-size: 4em;
   font-variant: small-caps;
+  user-select: none;
 }
 
 p
@@ -38,11 +39,21 @@ ul
   padding: 0;
 }
 
+ul > p
+{
+  user-select: none;
+}
+
 li
 {
   width: 2.5em;
   height: 2.5em;
   margin: 0.3em 0.3em;
+}
+
+.menu li
+{
+  margin: 0.3em 0 0 0.7em;
 }
 
 .viewport
@@ -51,4 +62,28 @@ li
     0 1px 3px hsla(0, 0%, 0%, 0.12),
     0 1px 2px hsla(0, 0%, 0%, 0.24);
   background: hsl(0, 0%, 100%);
+}
+
+.menu button
+{
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  cursor: pointer;
+  font-family: serif;
+  font-size: 1.2em;
+  font-style: italic;
+  margin: 0.5em 0;
+  padding: 0;
+  user-select: none;
+}
+
+.menu button:focus
+{
+  outline: none;
+}
+
+.menu button:hover
+{
+  border-bottom: none;
 }

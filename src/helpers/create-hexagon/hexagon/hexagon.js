@@ -3,10 +3,10 @@ import convertPoints from './convert-points'
 import definePolygon from './define-polygon'
 import listPoints from './list-points'
 
-const assemblePolygon = d => pipe(listPoints, convertPoints(d), definePolygon)
+const assemblePolygon = a => d => pipe(listPoints, convertPoints(d), definePolygon(a))
 
-const hexagon = diameter => coordinates =>
-  coordinates.map(assemblePolygon(diameter))
+const hexagon = appearance => diameter => coordinates =>
+  coordinates.map(assemblePolygon(appearance)(diameter))
              .join('')
 
 

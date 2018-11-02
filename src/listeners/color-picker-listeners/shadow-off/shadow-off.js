@@ -2,8 +2,7 @@ const shadowOff = () =>
 {
   const target = event.target
 
-  target.removeAttribute('stroke')
-  target.removeAttribute('stroke-width')
+  target.classList.remove('shadow')
 }
 
 export default shadowOff

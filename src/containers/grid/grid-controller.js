@@ -1,14 +1,16 @@
 import gridModel from './grid-model'
 
 const gridController = (() => {
-  const createModel = representation => gridModel.create(representation)
+  const setModel = representation => gridModel.set(representation)
+  const getModel = () => gridModel.get()
   const updateModel = (id, color) => {
     const index = id.split(/\-/)[1]
     gridModel.update(index, color)
   }
 
   return {
-    createModel,
+    setModel,
+    getModel,
     updateModel
   }
 })()

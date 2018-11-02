@@ -1,10 +1,12 @@
 const gridModel = (() => {
   let model
-  const create = representation => model = representation
+  const set = representation => model = representation
+  const get = () => model
   const update = (index, color) => model[index] = color
 
   return {
-    create,
+    set,
+    get,
     update
   }
 })()

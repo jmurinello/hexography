@@ -1,8 +1,8 @@
-import gridModel from '../../grid-model'
+import gridController from '../../grid-controller'
 
 const createGridModel = (coordinates, x = 1, representation = []) => {
   x > coordinates.length
-    ? gridModel(representation)
+    ? gridController.createModel(representation)
     : createGridModel(coordinates, x + 1, [...representation, 'framework'])
 
   return coordinates

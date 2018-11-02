@@ -1,5 +1,12 @@
-export let gridRepresentation
+const gridModel = (() => {
+  let model
+  const create = representation => model = representation
+  const update = (index, color) => model[index] = color
 
-const gridModel = model => gridRepresentation = model
+  return {
+    create,
+    update
+  }
+})()
 
 export default gridModel

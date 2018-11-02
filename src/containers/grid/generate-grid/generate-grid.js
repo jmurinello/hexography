@@ -1,4 +1,4 @@
-import pipe from '../../lib/pipe'
+import pipe from '../../../lib/pipe'
 import pickEndpoint from './pick-endpoint'
 import collectInterval from './collect-interval'
 import gatherCoordinates from './gather-coordinates'

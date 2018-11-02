@@ -1,4 +1,4 @@
-import gridModel from '../../../helpers/grid-model'
+import gridModel from '../../grid-model'
 
 const createGridModel = (coordinates, x = 1, representation = []) => {
   x > coordinates.length

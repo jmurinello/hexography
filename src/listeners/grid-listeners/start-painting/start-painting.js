@@ -5,6 +5,8 @@ const paint = () =>
 {
   const target = event.target
   const targetId = target.id
+  const newBtn = document.querySelector('.js-new-file')
+  if (newBtn.hasAttribute('disabled')) { newBtn.removeAttribute('disabled') }
 
   target.setAttribute('class', `${currentColor}`)
   gridController.updateModel(targetId, currentColor)

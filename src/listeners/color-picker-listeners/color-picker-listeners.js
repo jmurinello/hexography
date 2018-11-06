@@ -5,7 +5,7 @@ import shadowOn from './shadow-on'
 const enclose = ([x, y]) => e => e.addEventListener(x, y)
 
 const addEvent = listener =>
-  document.querySelectorAll('.js-palette polygon').forEach(enclose(listener))
+  document.querySelectorAll('.menu-list-color-picker-item polygon').forEach(enclose(listener))
 
 const spreadListeners = list => list.map(addEvent)
 

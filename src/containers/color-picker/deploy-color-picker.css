@@ -32,6 +32,7 @@
   stroke: hsl(132, 29%, 36%);
 }
 
+.current,
 .light-brown
 {
   fill: hsl(49, 48%, 54%);
@@ -42,11 +43,6 @@
 {
   fill: hsl(40, 75%, 33%);
   stroke: hsl(40, 75%, 33%);
-}
-
-.current
-{
-  fill: var(--base-color);
 }
 
 .shadow

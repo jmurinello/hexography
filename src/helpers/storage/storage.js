@@ -83,6 +83,15 @@ const storage = (() => {
 
     if (action === 'newSave') {
       const saveForm = document.querySelector('#save-form');
+      const filename = document.querySelector('input')
+      filename.oninput = () => {
+        if(filename.value.length > 0) {
+          saveBtn().removeAttribute('disabled')
+        } else {
+          saveBtn().setAttribute('disabled', '')
+        }
+      }
+
       saveForm.onsubmit = e => {
         e.preventDefault()
         const filename = saveForm.filename.value

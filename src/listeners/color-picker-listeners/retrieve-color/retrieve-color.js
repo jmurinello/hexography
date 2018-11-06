@@ -1,13 +1,11 @@
-export let currentColor
+export let currentColor = 'light-brown'
 
 const retrieveColor = () =>
 {
-  const style = window.getComputedStyle(event.target, null)
-  const color = style.getPropertyValue('fill')
-  const element = document.querySelector('.current polygon')
-
+  const color = event.target.getAttribute('class').split(' ')[0]
+  const element = document.querySelector('.js-shade7 polygon')
   currentColor = color
-  element.setAttribute('fill', `${color}`)
+  element.setAttribute('class', `${color}`)
 }
 
 export default retrieveColor

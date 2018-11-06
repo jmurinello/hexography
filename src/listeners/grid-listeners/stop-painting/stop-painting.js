@@ -1,4 +1,4 @@
 const stopPainting = () =>
-  document.querySelector('.framework').onmousemove = null
+  document.querySelector('.js-viewport g').onmousemove = null
 
 export default stopPainting

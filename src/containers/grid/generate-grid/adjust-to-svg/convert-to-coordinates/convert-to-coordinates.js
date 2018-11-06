@@ -1,4 +1,4 @@
-import diameter from '../../../../helpers/diameter'
+import diameter from '../../../../../helpers/diameter'
 
 const toCoordinates = ([abscissa, ordinate]) => {
   const x = Math.round((abscissa * Math.sqrt(3)/3 - ordinate / 3) / diameter)

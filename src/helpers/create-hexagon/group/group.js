@@ -1,3 +1,3 @@
-const group = attributes => content => `<g class=${attributes}>${content}</g>`
+const group = content => `<g>${content}</g>`
 
 export default group

@@ -2,7 +2,7 @@ import compose from '../../lib/compose'
 import hexagon from './hexagon'
 import group from './group'
 
-const groupHexagon = a => d => compose(group(a), hexagon(d))
+const groupHexagon = a => d => compose(group, hexagon(a)(d))
 
 const createHexagon =
 (

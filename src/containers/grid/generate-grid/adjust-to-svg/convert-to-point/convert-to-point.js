@@ -1,4 +1,4 @@
-import diameter from '../../../../helpers/diameter'
+import diameter from '../../../../../helpers/diameter'
 
 const toPoint = ([x, y]) => {
   const abscissa = diameter * (x + y/2) * Math.sqrt(3)

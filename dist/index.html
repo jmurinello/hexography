@@ -1,47 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Hexography</title>
-<link href="/main.714898df11168c0f6941.css" rel="stylesheet"></head>
-<body>
-  <h1>Hexography</h1>
-  <div>
-    <svg viewBox="-480 -205 960 410" class="viewport js-viewport">
-      <defs>
-        <filter id='highlight'>
-          <feMorphology operator="erode" radius="1"/>
-          <feComposite in="SourceGraphic" operator="in"/>
-        </filter>
-      </defs>
-    </svg>
-  </div>
-  <ul class="js-palette">
-    <p>Select a color:</p>
-    <li>
-      <svg viewBox="-25 -25 50 50" class="js-shade1"></svg>
-    </li>
-    <li>
-      <svg viewBox="-25 -25 50 50" class="js-shade2"></svg>
-    </li>
-    <li>
-      <svg viewBox="-25 -25 50 50" class="js-shade3"></svg>
-    </li>
-    <li>
-      <svg viewBox="-25 -25 50 50" class="js-shade4"></svg>
-    </li>
-    <li>
-      <svg viewBox="-25 -25 50 50" class="js-shade5"></svg>
-    </li>
-    <li>
-      <svg viewBox="-25 -25 50 50" class="js-shade6"></svg>
-    </li>
-  </ul>
-  <ul>
-    <p>Current color:</p>
-    <li>
-      <svg viewBox="-25 -25 50 50" class="js-shade7"></svg>
-    </li>
-  </ul>
-<script type="text/javascript" src="/main.03c5029e642a2c819f3a.js"></script></body>
+  <head>
+    <meta charset="utf-8">
+    <title>Hexography</title>
+  <link href="/main.6ccad0ca14f23bdeddf2.css" rel="stylesheet"></head>
+  <body>
+    <span id="root">
+      <div class="menu">
+        <div class="menu-logo">
+          <div class="logo">
+            <div class="logomark">
+              <div class="logotype">h</div>
+            </div>
+          </div>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-list-item">
+            <div class="menu-list-divider"></div>
+          </li>
+          <li class="menu-list-item">
+            <div class="menu-list-label">File</div>
+            <ul class="menu-list-file">
+              <li class="menu-list-file-item">
+                <button type="button" class="button menu-list-file-label js-new-file" disabled>New</button>
+              </li>
+              <li class="menu-list-file-item">
+                <button type="button" class="button menu-list-file-label js-save-file">Save</button>
+              </li>
+              <li class="menu-list-file-item">
+                <button type="button" class="button menu-list-file-label js-load-file">Load</button>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-list-item">
+            <div class="menu-list-divider"></div>
+          </li>
+          <li class="menu-list-item">
+            <div class="menu-list-label">Current Color</div>
+            <div class="menu-list-current-color">
+              <div class="menu-list-current-color-item">
+                <svg viewBox="-25 -25 50 50" class="js-shade7"></svg>
+              </div>
+            </div>
+          </li>
+          <li class="menu-list-item">
+            <div class="menu-list-divider"></div>
+          </li>
+          <li class="menu-list-item">
+            <div class="menu-list-label">Color Picker</div>
+            <ul class="menu-list-color-picker">
+              <li class="menu-list-color-picker-item-wrapper">
+                <div class="menu-list-color-picker-item">
+                  <svg viewBox="-25 -25 50 50" class="js-shade1"></svg>
+                </div>
+              </li>
+              <li class="menu-list-color-picker-item-wrapper">
+                <div class="menu-list-color-picker-item">
+                  <svg viewBox="-25 -25 50 50" class="js-shade2"></svg>
+                </div>
+              </li>
+              <li class="menu-list-color-picker-item-wrapper">
+                <div class="menu-list-color-picker-item">
+                  <svg viewBox="-25 -25 50 50" class="js-shade3"></svg>
+                </div>
+              </li>
+              <li class="menu-list-color-picker-item-wrapper">
+                <div class="menu-list-color-picker-item">
+                  <svg viewBox="-25 -25 50 50" class="js-shade4"></svg>
+                </div>
+              </li>
+              <li class="menu-list-color-picker-item-wrapper">
+                <div class="menu-list-color-picker-item">
+                  <svg viewBox="-25 -25 50 50" class="js-shade5"></svg>
+                </div>
+              </li>
+              <li class="menu-list-color-picker-item-wrapper">
+                <div class="menu-list-color-picker-item">
+                  <svg viewBox="-25 -25 50 50" class="js-shade6"></svg>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="editor">
+        <div class="editor-viewport">
+          <svg viewBox="-480 -205 960 410" class="js-viewport">
+            <defs>
+            <filter id='highlight'>
+            <feMorphology operator="erode" radius="1"/>
+            <feComposite in="SourceGraphic" operator="in"/>
+            </filter>
+            </defs>
+          </svg>
+        </div>
+        <div class="editor-modal">
+          <div class="modal-content">
+            <div class="modal-title js-modal-title">
+              <h3></h3>
+            </div>
+            <div class="modal-body">
+              <ul class="modal-list js-modal-list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+  <script type="text/javascript" src="/main.67861ed56f17d423c4f9.js"></script></body>
 </html>

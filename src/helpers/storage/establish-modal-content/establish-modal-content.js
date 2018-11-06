@@ -1,12 +1,12 @@
 const establishModalContent = (title, data = []) => new Promise(resolve =>{
-  console.log(title)
-  console.log(data)
   let div,
     li,
     span,
     button,
     content,
-    info
+    info,
+    form,
+    input
 
   const modalHeading = document.querySelector('.js-modal-title h3')
   const modalBodyList = document.querySelector('.js-modal-list')
@@ -33,9 +33,30 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
     span.textContent = content
   }
 
+  const createListForm = () => {
+    form = li.appendChild(document.createElement('form'))
+    form.classList.add('modal-list-item')
+    form.setAttribute('id', 'save-form')
+  }
+
+  const createListFormInput = content => {
+    input = form.appendChild(document.createElement('input'))
+    input.setAttribute('type', 'text')
+    input.setAttribute('name', 'filename')
+    input.setAttribute('maxlength', 12)
+    input.setAttribute('placeholder', `${content}`)
+    input.classList.add('modal-list-label')
+  }
+
   const createButton = buttonInfo => {
     button = div.appendChild(document.createElement('button'))
-    button.setAttribute('type', 'button')
+
+    if (buttonInfo.name === 'save') {
+      button.setAttribute('type', 'submit')
+      button.setAttribute('form', 'save-form')
+    } else {
+      button.setAttribute('type', 'button')
+    }
 
     const buttonClass = ['button', `${buttonInfo.className}`]
     buttonClass.forEach(name => button.classList.add(`${name}`))
@@ -100,6 +121,15 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
     modalBodyList.parentNode.replaceChild(frag, modalBodyList)
   }
 
+  const createForm = ({ heading, placeholder, options }) => {
+    createListItemWrapper()
+    createListForm()
+    createListFormInput(placeholder)
+    createButtons(options)
+    appendList(heading)
+    resolve()
+  }
+
   const createContent = ({ heading = 'load', label, options }) => {
     createListItemWrapper()
     createListItem()
@@ -110,6 +140,7 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
   }
 
   const saveHeading = 'Save'
+  const saveLable = 'Choose a block to save'
   const confirmOptions = [false, true]
   const saveOptions = ['cancel', 'save']
   const unusedBlock = ['unused block']
@@ -125,10 +156,19 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
   }
 
   if (title === 'confirmLoad') {
-    const filename = getFilename(data[0])[2].toUpperCase()
+    const filename = getFilename(data[0])[2]
     content = {
       label: `Load '${filename}' file?`,
-      options: saveOptions
+      options: confirmOptions
+    }
+    createContent(content)
+  }
+
+  if (title === 'overwrite') {
+    const filename = getFilename(data[0])[2]
+    content = {
+      label: `Overwrite '${filename}' file?`,
+      options: confirmOptions
     }
     createContent(content)
   }
@@ -136,10 +176,10 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
   if (title === 'newSave') {
     content = {
       heading: saveHeading,
-      label: 'Enter file name',
+      placeholder: 'Enter file name',
       options: saveOptions
     }
-    createContent(content)
+    createForm(content)
   }
 
   if (title === 'load' && data.length === 0) {
@@ -155,7 +195,7 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
     newOptions.push(returnOption[0])
     content = {
       heading: saveHeading,
-      label: 'Choose a block to save',
+      label: saveLable,
       options: newOptions
     }
     createContent(content)
@@ -171,6 +211,20 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
     }
     createContent(content)
   }
+
+  if (title === 'save' && data.length > 0) {
+    let newOptions = files.slice()
+    if (files.length < 4) {
+      newOptions.splice(newOptions.length - 1, 0, unusedBlock[0])
+    }
+    content = {
+      heading: saveHeading,
+      label: saveLable,
+      options: newOptions
+    }
+    createContent(content)
+  }
+
 })
 
 export default establishModalContent

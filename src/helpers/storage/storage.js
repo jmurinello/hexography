@@ -17,11 +17,12 @@ const storage = (() => {
   const returnBtn = () => document.querySelector('.button-return')
   const newFileBtn = () => document.querySelector('.button-unused-block')
 
-  const addModalListeners = (action, filename = null) => {
+  const addModalListeners = (action, file = null) => {
 
     if (action === 'new') {
       confirmBtn().onclick = () => {
-        toggleModal()
+        establishModalContent('save', getStorage())
+          .then(() => addModalListeners('save'))
       }
       cancelBtn().onclick = () => {
         render.newFile()
@@ -41,9 +42,9 @@ const storage = (() => {
 
     if (action === 'confirmLoad') {
       confirmBtn().onclick = () => {
-        const name = item => item.name === filename
-        const file = getStorage().filter(name)
-        render.loadFile(file[0].data)
+        const name = item => item.name === file
+        const fileData = getStorage().filter(name)
+        render.loadFile(fileData[0].data)
         toggleModal()
       }
       cancelBtn().onclick = () => {
@@ -52,17 +53,53 @@ const storage = (() => {
       }
     }
 
+    if (action === 'overwrite') {
+      confirmBtn().onclick = () => {
+        let fileIndex
+        const name = (item, index) => {
+          if (item.name === file) {
+            fileIndex = index
+          }
+        }
+        getStorage().filter(name)
+        performSave(fileIndex)
+      }
+      cancelBtn().onclick = () => {
+        establishModalContent('save', getStorage())
+          .then(() => addModalListeners('save'))
+      }
+    }
+
     if (action === 'save') {
       const files = document.querySelectorAll('.button[class*="map-"]')
-      console.log(newFileBtn())
-      newFileBtn().onclick = () => performSave()
+      if (files.length !== 0) {
+        files.forEach(file => {
+          file.onclick = () => overwriteFile()
+        })
+      }
+      if (newFileBtn()) { newFileBtn().onclick = () => performSave() }
       returnBtn().onclick = () => toggleModal()
     }
 
     if (action === 'newSave') {
-      saveBtn().onclick = () => {
+      const saveForm = document.querySelector('#save-form');
+      saveForm.onsubmit = e => {
+        e.preventDefault()
+        const filename = saveForm.filename.value
+        let fileIndex = file
+        const name = filename.replace(/\s/g, '-').toLowerCase()
+        const currentData = getStorage()
+        const data = gridController.getModel()
+        const newData = {name: `map:${name}`, data}
+        if (fileIndex === null) {
+          setStorage([...currentData, newData])
+        } else {
+          currentData.splice(fileIndex, 1, newData)
+          setStorage(currentData)
+        }
         toggleModal()
       }
+
       cancelBtn().onclick = () => {
         establishModalContent('save', getStorage())
           .then(() => addModalListeners('save'))
@@ -85,10 +122,17 @@ const storage = (() => {
       .then(() => addModalListeners(title, filename))
   }
 
-  const performSave = () => {
+  const overwriteFile = () => {
+    const filename = retrieveFilename()
+    const title = 'overwrite'
+    establishModalContent(title, [filename])
+      .then(() => addModalListeners(title, filename))
+  }
+
+  const performSave = (index = null) => {
     const title = 'newSave'
     establishModalContent(title)
-      .then(() => addModalListeners(title))
+      .then(() => addModalListeners(title, index))
   }
 
   const open = action => {

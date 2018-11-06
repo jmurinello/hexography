@@ -43,6 +43,7 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
     input = form.appendChild(document.createElement('input'))
     input.setAttribute('type', 'text')
     input.setAttribute('name', 'filename')
+    input.setAttribute('autocomplete', 'off')
     input.setAttribute('maxlength', 12)
     input.setAttribute('placeholder', `${content}`)
     input.classList.add('modal-list-label')
@@ -54,6 +55,7 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
     if (buttonInfo.name === 'save') {
       button.setAttribute('type', 'submit')
       button.setAttribute('form', 'save-form')
+      button.setAttribute('disabled', '')
     } else {
       button.setAttribute('type', 'button')
     }

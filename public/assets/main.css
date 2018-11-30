@@ -261,7 +261,7 @@ body
 
 .editor
 {
-  background-color: hsl(240, 20%, 98%);
+  background-color: hsl(240, 6%, 91%);
   width: calc(100vw - 192px);
   position: relative;
   display: flex;

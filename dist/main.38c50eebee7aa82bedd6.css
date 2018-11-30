@@ -261,7 +261,7 @@ body
 
 .editor
 {
-  background-color: hsl(240, 20%, 98%);
+  background-color: hsl(240, 6%, 91%);
   width: calc(100vw - 192px);
   position: relative;
   display: flex;
@@ -288,10 +288,12 @@ body
   border-radius: 2px;
   overflow: hidden;
   opacity: 0;
+  pointer-events: none;
 }
 
 .editor-modal.visible
 {
+  pointer-events: auto;
   opacity: 1;
 }
 

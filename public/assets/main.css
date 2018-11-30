@@ -288,10 +288,12 @@ body
   border-radius: 2px;
   overflow: hidden;
   opacity: 0;
+  pointer-events: none;
 }
 
 .editor-modal.visible
 {
+  pointer-events: auto;
   opacity: 1;
 }
 

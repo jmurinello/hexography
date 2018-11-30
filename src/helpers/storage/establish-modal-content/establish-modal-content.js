@@ -142,6 +142,7 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
   }
 
   const saveHeading = 'Save'
+  const overwriteHeading = 'Overwrite'
   const saveLable = 'Choose a block to save'
   const confirmOptions = [false, true]
   const saveOptions = ['cancel', 'save']
@@ -169,6 +170,7 @@ const establishModalContent = (title, data = []) => new Promise(resolve =>{
   if (title === 'overwrite') {
     const filename = getFilename(data[0])[2]
     content = {
+      heading: overwriteHeading,
       label: `Overwrite '${filename}' file?`,
       options: confirmOptions
     }

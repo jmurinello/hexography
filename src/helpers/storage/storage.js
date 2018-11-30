@@ -16,12 +16,15 @@ const storage = (() => {
   const cancelBtn = () => document.querySelector('.button-cancel')
   const returnBtn = () => document.querySelector('.button-return')
   const newFileBtn = () => document.querySelector('.button-unused-block')
+  let isNew = false
 
   const addModalListeners = (action, file = null) => {
 
     if (action === 'new') {
       confirmBtn().onclick = () => {
         establishModalContent('save', getStorage())
+          .then(() => isNew = true)
+          .then(() => console.log(isNew))
           .then(() => addModalListeners('save'))
       }
       cancelBtn().onclick = () => {
@@ -78,7 +81,13 @@ const storage = (() => {
         })
       }
       if (newFileBtn()) { newFileBtn().onclick = () => performSave() }
-      returnBtn().onclick = () => toggleModal()
+      returnBtn().onclick = () => {
+        if (isNew) {
+          isNew = false
+          console.log(isNew)
+        }
+        toggleModal()
+      }
     }
 
     if (action === 'newSave') {
@@ -105,6 +114,11 @@ const storage = (() => {
         } else {
           currentData.splice(fileIndex, 1, newData)
           setStorage(currentData)
+        }
+        if (isNew) {
+          render.newFile()
+          isNew = false
+          console.log(isNew)
         }
         toggleModal()
       }

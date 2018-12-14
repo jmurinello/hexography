@@ -7,10 +7,10 @@ const gridController = (() => {
 
   const toggleModified = () => {
     if (typeof modified === 'undefined') { return modified = false }
-    modified = !modified
+    return modified = !modified
   }
 
-  const setModel = representation => {
+  const setModel = (representation) => {
     toggleModified()
     gridModel.set(representation)
   }
@@ -19,7 +19,7 @@ const gridController = (() => {
 
   const updateModel = (id, color) => {
     if (!fileModified()) { toggleModified() }
-    const index = id.split(/\-/)[1]
+    const index = id.split(/-/)[1]
     gridModel.update(index, color)
   }
 

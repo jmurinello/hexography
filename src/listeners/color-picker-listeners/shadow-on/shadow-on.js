@@ -1,3 +1,3 @@
-const shadowOn = () => event.target.classList.add('shadow')
+const shadowOn = () => window.event.target.classList.add('shadow')
 
 export default shadowOn

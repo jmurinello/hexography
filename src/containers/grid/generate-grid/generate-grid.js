@@ -6,14 +6,13 @@ import adjustToSvg from './adjust-to-svg'
 import createGridModel from './create-grid-model'
 import plotGrid from './plot-grid'
 
-const generateGrid = pipe
-(
+const generateGrid = pipe(
   pickEndpoint,
   collectInterval,
   gatherCoordinates,
   adjustToSvg,
   createGridModel,
-  plotGrid
+  plotGrid,
 )
 
 export default generateGrid

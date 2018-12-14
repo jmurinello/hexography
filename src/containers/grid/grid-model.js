@@ -7,7 +7,7 @@ const gridModel = (() => {
   return {
     set,
     get,
-    update
+    update,
   }
 })()
 

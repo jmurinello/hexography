@@ -3,7 +3,7 @@ import establishModalContent from './establish-modal-content'
 import render from './render'
 
 const storage = (() => {
-  const localStorage = window.localStorage
+  const { localStorage } = window
   const storageName = 'hexography:user-saved-data'
   const getStorage = () => JSON.parse(localStorage.getItem(storageName))
   const setStorage = data => localStorage.setItem(storageName, JSON.stringify(data))
@@ -19,12 +19,10 @@ const storage = (() => {
   let isNew = false
 
   const addModalListeners = (action, file = null) => {
-
     if (action === 'new') {
       confirmBtn().onclick = () => {
         establishModalContent('save', getStorage())
-          .then(() => isNew = true)
-          .then(() => console.log(isNew))
+          .then(() => isNew = true) // eslint-disable-line no-return-assign
           .then(() => addModalListeners('save'))
       }
       cancelBtn().onclick = () => {
@@ -36,8 +34,8 @@ const storage = (() => {
     if (action === 'load') {
       const files = document.querySelectorAll('button[class*="map-"]')
       if (files.length !== 0) {
-        files.forEach(file => {
-          file.onclick = () => performLoad()
+        files.forEach((entry) => {
+          entry.onclick = () => performLoad() // eslint-disable-line no-param-reassign
         })
       }
       returnBtn().onclick = () => toggleModal()
@@ -76,15 +74,14 @@ const storage = (() => {
     if (action === 'save') {
       const files = document.querySelectorAll('.button[class*="map-"]')
       if (files.length !== 0) {
-        files.forEach(file => {
-          file.onclick = () => overwriteFile()
+        files.forEach((entry) => {
+          entry.onclick = () => overwriteFile()
         })
       }
       if (newFileBtn()) { newFileBtn().onclick = () => performSave() }
       returnBtn().onclick = () => {
         if (isNew) {
           isNew = false
-          console.log(isNew)
         }
         toggleModal()
       }
@@ -94,21 +91,21 @@ const storage = (() => {
       const saveForm = document.querySelector('#save-form');
       const filename = document.querySelector('input')
       filename.oninput = () => {
-        if(filename.value.length > 0) {
+        if (filename.value.length > 0) {
           saveBtn().removeAttribute('disabled')
         } else {
           saveBtn().setAttribute('disabled', '')
         }
       }
 
-      saveForm.onsubmit = e => {
+      saveForm.onsubmit = (e) => {
         e.preventDefault()
-        const filename = saveForm.filename.value
-        let fileIndex = file
-        const name = filename.replace(/\s/g, '-').toLowerCase()
+        const nameEntry = saveForm.filename.value
+        const fileIndex = file
+        const name = nameEntry.replace(/\s/g, '-').toLowerCase()
         const currentData = getStorage()
         const data = gridController.getModel()
-        const newData = {name: `map:${name}`, data}
+        const newData = { name: `map:${name}`, data }
         if (fileIndex === null) {
           setStorage([...currentData, newData])
         } else {
@@ -118,7 +115,6 @@ const storage = (() => {
         if (isNew) {
           render.newFile()
           isNew = false
-          console.log(isNew)
         }
         toggleModal()
       }
@@ -131,7 +127,7 @@ const storage = (() => {
   }
 
   const retrieveFilename = () => {
-    const target = event.target
+    const { target } = window.event
     const className = target.classList[1]
     const regex = /^(map-)/
     const filename = className.split(regex)[2]
@@ -158,7 +154,7 @@ const storage = (() => {
       .then(() => addModalListeners(title, index))
   }
 
-  const open = action => {
+  const open = (action) => {
     let currentData = getStorage()
     if (!currentData) { currentData = setStorage([]) }
 
@@ -170,7 +166,7 @@ const storage = (() => {
   }
 
   return {
-    open
+    open,
   }
 })()
 

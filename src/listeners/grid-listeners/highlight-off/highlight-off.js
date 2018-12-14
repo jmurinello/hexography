@@ -1,3 +1,5 @@
-const highlightOff = () => event.target.removeAttribute('filter')
+const highlightOff = () => {
+  window.event.target.removeAttribute('filter')
+}
 
 export default highlightOff

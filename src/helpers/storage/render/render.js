@@ -8,17 +8,20 @@ const render = (() => {
     newBtn.setAttribute('disabled', '')
   }
 
+  // eslint-disable-next-line consistent-return
   const toggleNewButton = () => {
     if (newBtn.hasAttribute('disabled')) { return newBtn.removeAttribute('disabled') }
   }
 
-  const mirrorGridModel = data => {
+  const mirrorGridModel = (data) => {
     let newModel
     const currentModel = gridController.getModel()
 
+    // eslint-disable-next-line no-unused-expressions
     Array.isArray(data)
-      ? newModel = currentModel.map((item, index) => item = data[index] )
-      : newModel = currentModel.map(item => data)
+    // eslint-disable-next-line no-return-assign
+      ? newModel = currentModel.map((item, index) => item = data[index])
+      : newModel = currentModel.map(item => data) // eslint-disable-line no-unused-vars
 
     gridController.setModel(newModel)
   }
@@ -30,7 +33,7 @@ const render = (() => {
     disableNewButton()
   }
 
-  const loadFile = data => {
+  const loadFile = (data) => {
     mirrorGridModel(data)
     grid().forEach((tile, index) => tile.setAttribute('class', data[index]))
     toggleNewButton()
@@ -38,7 +41,7 @@ const render = (() => {
 
   return {
     newFile,
-    loadFile
+    loadFile,
   }
 })()
 

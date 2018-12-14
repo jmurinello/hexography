@@ -1,48 +1,43 @@
-.light-blue,
-.blue,
-.light-green,
-.green,
-.light-brown,
-.brown
+.light-blue:not([id=picker]),
+.blue:not([id=picker]),
+.light-green:not([id=picker]),
+.green:not([id=picker]),
+.light-brown:not([id=picker]),
+.brown:not([id=picker])
 {
   stroke-width: 0.03em;
+  stroke: hsl(0, 0%, 33%);
 }
 
 .light-blue
 {
   fill: hsl(211, 34%, 76%);
-  stroke: hsl(211, 34%, 76%);
 }
 
 .blue
 {
   fill: hsl(208, 46%, 66%);
-  stroke: hsl(208, 46%, 66%);
 }
 
 .light-green
 {
   fill: hsl(91, 37%, 54%);
-  stroke: hsl(91, 37%, 54%);
 }
 
 .green
 {
   fill: hsl(132, 29%, 36%);
-  stroke: hsl(132, 29%, 36%);
 }
 
 .current,
 .light-brown
 {
   fill: hsl(49, 48%, 54%);
-  stroke: hsl(49, 48%, 54%);
 }
 
 .brown
 {
   fill: hsl(40, 75%, 33%);
-  stroke: hsl(40, 75%, 33%);
 }
 
 .shadow

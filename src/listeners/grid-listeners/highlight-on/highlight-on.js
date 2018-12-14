@@ -1,3 +1,5 @@
-const highlightOn = () => event.target.setAttribute('filter', 'url(#highlight)')
+const highlightOn = () => {
+  window.event.target.setAttribute('filter', 'url(#highlight)')
+}
 
 export default highlightOn

@@ -1,3 +1,3 @@
-const shadowOff = () => event.target.classList.remove('shadow')
+const shadowOff = () => window.event.target.classList.remove('shadow')
 
 export default shadowOff
